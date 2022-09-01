@@ -1,0 +1,35 @@
+<h1>Registrar Usuario</h1>
+<form (submit)="register($event)">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="username" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label >Dni <small>(Ingrese 8 números)</small></label>
+      <input type="text" class="form-control" id="dni" pattern="[0-9]{8}" minlength="8" maxlength="8" required>
+    </div>
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" class="form-control" id="nombre" required>
+    </div>
+    <div class="form-group">
+        <label>Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" required>
+      </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" class="form-control" id="password" required>
+    </div>  
+    <div class="form-group">
+      <label>Tipo Usuario</label>
+      <select class="form-control" id="tipoUsuario" required>
+        <option value="">--Seleccionar--</option>
+        <option value="BIOLOGO_MARINO">BIOLOGO MARINO</option>
+        <option value="TECNICO_TRIPULANTE">TECNICO TRIPULANTE</option>
+        <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary ml-2">Register</button>
+    <a class="btn btn-danger ml-2" routerLink="/" routerLinkActive="active">Cancel</a>
+
+  </form>

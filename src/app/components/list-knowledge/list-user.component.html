@@ -1,0 +1,46 @@
+<style>
+    .img {
+        width: 5em;
+        height: 5em;
+    }
+</style>
+
+<div class="list row">
+    <div class="col-md-12 mb-3">
+        <div class="d-flex justify-content-center">
+            <h4 class="text-center" style="font-size: 2.2em;">Lista de usuarios</h4>
+        </div>
+    </div>
+</div>
+<div>
+     <button class="btn btn-primary" (click)="redirectRegister()" >Agregar usuario</button> 
+</div>
+<br>
+    <div class="d-flex flex-wrap" >
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Username</td>
+                    <td>Dni</td>
+                    <td>Nombre</td>
+                    <td>Apellidos</td>
+                    <td>Contraseña</td>
+                    <td>Tipo usuario</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.dni}}</td>
+                    <td>{{user.nombre}}</td>
+                    <td>{{user.apellidos}}</td>
+                    <td>{{user.password}}</td>
+                    <td>{{user.rol}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
