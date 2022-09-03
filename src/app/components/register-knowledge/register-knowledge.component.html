@@ -1,8 +1,10 @@
+<div class="container">
+<br>
 <h1>Registrar Usuario</h1>
 <form (submit)="register($event)">
     <div class="form-group">
       <label>Username</label>
-      <input type="text" id="username" class="form-control" required>
+      <input type="text" id="username" class="form-control" required maxlength="50">
     </div>
     <div class="form-group">
       <label >Dni <small>(Ingrese 8 números)</small></label>
@@ -10,15 +12,15 @@
     </div>
     <div class="form-group">
       <label>Nombre</label>
-      <input type="text" class="form-control" id="nombre" required>
+      <input type="text" class="form-control" id="nombre" required maxlength="50">
     </div>
     <div class="form-group">
         <label>Apellidos</label>
-        <input type="text" class="form-control" id="apellidos" required>
+        <input type="text" class="form-control" id="apellidos" required maxlength="50">
       </div>
     <div class="form-group">
       <label>Contraseña</label>
-      <input type="password" class="form-control" id="password" required>
+      <input type="password" class="form-control" id="password" required maxlength="50">
     </div>  
     <div class="form-group">
       <label>Tipo Usuario</label>
@@ -33,3 +35,4 @@
     <a class="btn btn-danger ml-2" routerLink="/" routerLinkActive="active">Cancel</a>
 
   </form>
+</div>

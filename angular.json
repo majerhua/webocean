@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "porkysadmin": {
+    "oceanapp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/porkysadmin",
+            "outputPath": "dist/oceanapp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "porkysadmin:build"
+            "browserTarget": "oceanapp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "porkysadmin:build:production"
+              "browserTarget": "oceanapp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "porkysadmin:build"
+            "browserTarget": "oceanapp:build"
           }
         },
         "test": {
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "porkysadmin:serve"
+            "devServerTarget": "oceanapp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "porkysadmin:serve:production"
+              "devServerTarget": "oceanapp:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "porkysadmin"
+  "defaultProject": "oceanapp"
 }

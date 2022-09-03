@@ -10,18 +10,16 @@ import { UserService } from 'src/app/services/user.service';
 export class KnowledgeListComponent implements OnInit {
   users?: User[];
   constructor(private userService: UserService) { }
-  public imageSrc: string = "../../../assets/appporkys.jpg";
 
   ngOnInit(): void {
-    setTimeout(() =>this.retrieveTutorials(),1000)
-    
+    setTimeout(() =>this.getUserAll(),1000)
   }
 
   public redirectRegister(){
     window.location.href = "user/add"
   }
 
-  retrieveTutorials(): void {
+  getUserAll(): void {
     this.userService.getAll()
       .subscribe(
         (data: User[] | undefined) => {
