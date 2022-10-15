@@ -1,0 +1,12 @@
+.galery {
+
+}
+
+.galery-row {
+  width: 600px;
+  display: flex;
+}
+
+.galery > div {
+  width: 200px
+}

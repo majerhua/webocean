@@ -9,12 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { RegisterKnowledgeComponent } from './components/register-knowledge/register-knowledge.component';
+import { ReportHistogramComponent } from './components/report-histogram/report-histogram.component';
+import { PerformanceReportComponent } from './components/performance-report/performance-report.component';
+import { IdentifiedSpeciesComponent } from './components/identified-species/identified-species.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KnowledgeListComponent,
-    RegisterKnowledgeComponent
+    RegisterKnowledgeComponent,
+    ReportHistogramComponent,
+    PerformanceReportComponent,
+    IdentifiedSpeciesComponent
   ],
   imports: [
     BrowserModule,
