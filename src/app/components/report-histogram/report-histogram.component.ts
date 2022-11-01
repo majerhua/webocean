@@ -20,7 +20,7 @@ export class ReportHistogramComponent implements OnInit {
 
   ngAfterViewInit() {
     var data = {
-      labels: ["Pelicano", "Pejerrey", "Gaviota"],
+      labels: ["Lobo marino", "Pelicano"],
       datasets: [{
         label: "Cantidad Especies",
         backgroundColor: "rgba(255,99,132,0.2)",
