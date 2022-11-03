@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'usuarios', component: KnowledgeListComponent,  },
   { path: 'usuario/agregar', component: RegisterKnowledgeComponent,  },
   { path: 'reporte-histograma', component: ReportHistogramComponent,  },
-  { path: 'reporte-desempenio', component: PerformanceReportComponent,  },
+  { path: 'linea-tiempo', component: PerformanceReportComponent,  },
   { path: 'especies-identificadas', component: IdentifiedSpeciesComponent,  }
 ];
 

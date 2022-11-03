@@ -1,5 +1,8 @@
 import {AfterViewInit, Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { UserService } from 'src/app/services/user.service';
+import { Report } from 'src/app/models/report.model';
+
 Chart.register(...registerables);
 @Component({
   selector: 'app-report-histogram',
@@ -9,8 +12,12 @@ Chart.register(...registerables);
 export class ReportHistogramComponent implements OnInit {
 
   @ViewChild('chart') chart: ElementRef | undefined;
+  fechaInicio = '';
+  fechaFin = '';
+  dataReport = new Array();
+  chartRender:any = null;
 
-  constructor() {
+  constructor(private userService: UserService) {
   
   }
 
@@ -18,45 +25,76 @@ export class ReportHistogramComponent implements OnInit {
 
   }
 
+  getReport(){
+
+    this.fechaInicio = (document.querySelector("#fechaInicio") as HTMLInputElement).value;
+    this.fechaFin = (document.querySelector("#fechaFin") as HTMLInputElement).value;
+
+    const report = new Report();
+    report.fechaInicio = this.fechaInicio;
+    report.fechaFin = this.fechaFin;
+
+    this.userService.getReportHistograma(report)
+    .subscribe(
+      (data: Report[]) => {
+        console.log("Data => ",data);
+        if(data.length > 0) {
+          this.dataReport = new Array(data[0].lobos_marinos, data[0].pelicanos);
+        }else {
+          this.dataReport = new Array();
+        }
+        console.log(this.dataReport);
+        this.chartRender?.destroy(); 
+        this.renderReport();
+      },
+      (error: any) => {
+        console.log(error);
+      });
+  }
+
   ngAfterViewInit() {
-    var data = {
-      labels: ["Lobo marino", "Pelicano"],
-      datasets: [{
-        label: "Cantidad Especies",
-        backgroundColor: "rgba(255,99,132,0.2)",
-        borderColor: "rgba(255,99,132,1)",
-        borderWidth: 2,
-        hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        hoverBorderColor: "rgba(255,99,132,1)",
-        data: [10, 20, 11],
-      }]
-    };
     
-    var options = {
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          stacked: true,
-          grid: {
-            display: true,
-            color: "rgba(255,99,132,0.2)"
-          }
-        },
-        x: {
-          grid: {
-            display: false
-          }
+    this.renderReport();
+}
+
+renderReport() {
+  var data = {
+    labels: ["Lobo marino", "Pelicano"],
+    datasets: [{
+      label: "Cantidad Especies",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
+      borderWidth: 2,
+      hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      hoverBorderColor: "rgba(255,99,132,1)",
+      data: this.dataReport,
+    }]
+  };
+  
+  var options = {
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        stacked: true,
+        grid: {
+          display: true,
+          color: "rgba(255,99,132,0.2)"
+        }
+      },
+      x: {
+        grid: {
+          display: false
         }
       }
-    };
-    
-    var ctx = this.chart?.nativeElement.getContext('2d');
-    console.log(this.chart?.nativeElement);
-    new Chart(ctx, {
-      type: 'bar',
-      options: options,
-      data: data
-    });
+    }
+  };
+  
+  var ctx = this.chart?.nativeElement.getContext('2d');
+  this.chartRender = new Chart(ctx, {
+    type: 'bar',
+    options: options,
+    data: data
+  });
 }
 
 }

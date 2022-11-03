@@ -3,9 +3,9 @@
 
   <div>
     <h2>Faena</h2>
-    <p>Fecha Inicio: <input type="date"/></p>
-    <p>Fecha Fin: <input type="date"/></p>
-    <button type="button">Generar Histograma</button>
+    <p>Fecha Inicio: <input type="date" id="fechaInicio"/></p>
+    <p>Fecha Fin: <input type="date" id="fechaFin"/></p>
+    <button type="button" (click)="getReport()" >Generar Histograma</button>
   </div>
 
   <div class="chart-container">

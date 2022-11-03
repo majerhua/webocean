@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UserService } from 'src/app/services/user.service';
+import { Report } from 'src/app/models/report.model';
 @Component({
   selector: 'app-identified-species',
   templateUrl: './identified-species.component.html',
@@ -8,15 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class IdentifiedSpeciesComponent implements OnInit {
 
 
-  imagenOne = "../../../assets/imagen_one.PNG";
-  imagenTwo = "../../../assets/imagen_two.PNG";
-  imagenThree = "../../../assets/imagen_thre.PNG";
+  dataReport = new Array<Report>();
 
-  constructor() { 
+  constructor(private userService: UserService) { 
 
   }
 
   ngOnInit(): void {
+
+    this.userService.getIdentifiedSpecies()
+    .subscribe(
+      (data: Report[]) => {
+        console.log("Data => ",data);
+          this.dataReport = data
+      },
+      (error: any) => {
+        console.log(error);
+      });
   }
 
 }

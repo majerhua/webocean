@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   urlUser = 'usuarios';
   histogramReport = 'reporte-histograma';
-  performanceReport = 'reporte-desempenio';
+  performanceReport = 'linea-tiempo';
   identifiedSpecies = 'especies-identificadas';
   title = 'oceanapp';
 }

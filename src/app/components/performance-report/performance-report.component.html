@@ -1,21 +1,8 @@
 <div class="container">
-  <h1>Desempeño de especies identificadas</h1>
+  <h1>Linea de tiempo de especies identificadas</h1>
 
-  <div>
-    <h2>Faena</h2>
-    <p>Fecha: <input type="date"/></p>
-    <button type="button">Ver grafica de desempeño</button>
-  </div>
-
-  <div class="container-graph">
-      <div>
-        <img [src]="graficaOne"/>
-        <p>Matriz de confusión</p>
-      </div>
-      <div>
-        <img [src]="graficaTwo"/>
-        <p>Gráfica de confusión</p>
-      </div>
+  <div class="chart-container">
+      <canvas #chart></canvas>
   </div>
 </div>
 
