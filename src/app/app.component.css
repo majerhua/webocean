@@ -1,0 +1,15 @@
+.navbar-collapse {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user {
+color: black;
+font-weight: bold;
+}
+
+.rol {
+  color: gray;
+  font-weight: bold;
+}

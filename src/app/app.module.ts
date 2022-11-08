@@ -12,6 +12,7 @@ import { RegisterKnowledgeComponent } from './components/register-knowledge/regi
 import { ReportHistogramComponent } from './components/report-histogram/report-histogram.component';
 import { PerformanceReportComponent } from './components/performance-report/performance-report.component';
 import { IdentifiedSpeciesComponent } from './components/identified-species/identified-species.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { IdentifiedSpeciesComponent } from './components/identified-species/iden
     RegisterKnowledgeComponent,
     ReportHistogramComponent,
     PerformanceReportComponent,
-    IdentifiedSpeciesComponent
+    IdentifiedSpeciesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -9,14 +9,41 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class KnowledgeListComponent implements OnInit {
   users?: User[];
-  constructor(private userService: UserService) { }
+  urlUser = '/usuarios';
+  histogramReport = '/reporte-histograma';
+  performanceReport = '/linea-tiempo';
+  identifiedSpecies = '/especies-identificadas';
+  title = 'oceanapp';
+  rol = ''
+  username = '' 
+
+  constructor(private userService: UserService) { 
+    if(localStorage.getItem('login') !== '1') {
+      window.location.href ="/login"
+    }
+    this.rol = String(localStorage.getItem('rol'));
+    this.username = String(localStorage.getItem('username'));
+  }
+
+  close() {
+    localStorage.setItem('login','0');
+    window.location.href ="/login"
+  }
 
   ngOnInit(): void {
     setTimeout(() =>this.getUserAll(),1000)
+    this.userService.test()
+    .subscribe(
+      (data: any[]) => {
+        console.log("Data => ",data);
+      },
+      (error: any) => {
+        console.log(error);
+      });
   }
 
   public redirectRegister(){
-    window.location.href = "user/add"
+    window.location.href = "/usuario/agregar"
   }
 
   getUserAll(): void {

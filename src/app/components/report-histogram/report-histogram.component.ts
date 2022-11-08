@@ -11,18 +11,37 @@ Chart.register(...registerables);
 })
 export class ReportHistogramComponent implements OnInit {
 
+  urlUser = '/usuarios';
+  histogramReport = '/reporte-histograma';
+  performanceReport = '/linea-tiempo';
+  identifiedSpecies = '/especies-identificadas';
+  title = 'oceanapp';
+
   @ViewChild('chart') chart: ElementRef | undefined;
   fechaInicio = '';
   fechaFin = '';
   dataReport = new Array();
   chartRender:any = null;
 
+  rol = ''
+  username = '' 
+
   constructor(private userService: UserService) {
-  
+    if(localStorage.getItem('login') !== '1') {
+      window.location.href ="/login"
+    }
+
+    this.rol = String(localStorage.getItem('rol'));
+    this.username = String(localStorage.getItem('username'));
   }
 
   ngOnInit() {
 
+  }
+
+  close() {
+    localStorage.setItem('login','0');
+    window.location.href ="/login"
   }
 
   getReport(){

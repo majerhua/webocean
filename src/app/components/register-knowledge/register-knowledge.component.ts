@@ -10,6 +10,12 @@ import {User} from 'src/app/models/user.model'
 export class RegisterKnowledgeComponent implements OnInit {
 
 
+  urlUser = 'usuarios';
+  histogramReport = 'reporte-histograma';
+  performanceReport = 'linea-tiempo';
+  identifiedSpecies = 'especies-identificadas';
+  title = 'oceanapp';
+
   public username:string = "";
   public dni: string = "";
   public nombre:string = "";
@@ -17,9 +23,24 @@ export class RegisterKnowledgeComponent implements OnInit {
   public password:string = "";
   public tipoUsuario:string = "";
 
-  constructor(private userService: UserService) { }
+  rol = ''
+  username_2 = '' 
+
+  constructor(private userService: UserService) { 
+    console.log(localStorage.getItem('login'));
+    if(localStorage.getItem('login') !== '1') {
+      window.location.href ="/login"
+    }
+    this.rol = String(localStorage.getItem('rol'));
+    this.username_2 = String(localStorage.getItem('username'));
+  }
 
   ngOnInit(): void {
+  }
+
+  close() {
+    localStorage.setItem('login','0');
+    window.location.href ="/login"
   }
 
   public redirectHome(){

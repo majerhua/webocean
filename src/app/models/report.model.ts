@@ -1,4 +1,5 @@
 export class Report {
+  fechaZarpe: string = '';
   pelicanos: number = 0;
   lobos_marinos: number = 0;
   fechaInicio?: string;

@@ -8,11 +8,27 @@ import { Report } from 'src/app/models/report.model';
 })
 export class IdentifiedSpeciesComponent implements OnInit {
 
-
+  urlUser = '/usuarios';
+  histogramReport = '/reporte-histograma';
+  performanceReport = '/linea-tiempo';
+  identifiedSpecies = '/especies-identificadas';
+  title = 'oceanapp';
   dataReport = new Array<Report>();
+  rol = ''
+  username = '' 
 
   constructor(private userService: UserService) { 
+    if(localStorage.getItem('login') !== '1') {
+      window.location.href ="/login"
+    }
 
+    this.rol = String(localStorage.getItem('rol'));
+    this.username = String(localStorage.getItem('username'));
+  }
+
+  close() {
+    localStorage.setItem('login','0');
+    window.location.href ="/login"
   }
 
   ngOnInit(): void {

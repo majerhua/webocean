@@ -11,6 +11,12 @@ Chart.register(...registerables);
 })
 export class PerformanceReportComponent implements OnInit {
 
+  urlUser = '/usuarios';
+  histogramReport = '/reporte-histograma';
+  performanceReport = '/linea-tiempo';
+  identifiedSpecies = '/especies-identificadas';
+  title = 'oceanapp';
+
   @ViewChild('chart') chart: ElementRef | undefined;
   fechaInicio = '';
   fechaFin = '';
@@ -19,9 +25,23 @@ export class PerformanceReportComponent implements OnInit {
   chartRender:any = null;
   labels = new Array();
 
-  constructor(private userService: UserService) { }
+  rol = ''
+  username = '' 
+
+  constructor(private userService: UserService) {
+    if(localStorage.getItem('login') !== '1') {
+      window.location.href ="/login"
+    }
+    this.rol = String(localStorage.getItem('rol'));
+    this.username = String(localStorage.getItem('username'));
+   }
 
   ngOnInit(): void {
+  }
+
+  close() {
+    localStorage.setItem('login','0');
+    window.location.href ="/login"
   }
 
   ngAfterViewInit() {

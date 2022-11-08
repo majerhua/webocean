@@ -1,3 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]='urlUser'>Ocean App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a *ngIf="rol=='ADMINISTRADOR'" class="nav-link" [routerLink]='urlUser'>Usuarios</a>
+        <a *ngIf="rol=='BIOLOGO_MARINO'" class="nav-link" [routerLink]='histogramReport'>Histograma</a>
+        <a *ngIf="rol=='BIOLOGO_MARINO'" class="nav-link" [routerLink]='performanceReport'>Linea tiempo</a>
+        <a *ngIf="rol=='BIOLOGO_MARINO'" class="nav-link" [routerLink]='identifiedSpecies'>Especies</a>
+      </div>
+      <div>
+        <p class="user">{{username}}<span class="rol">({{rol}})</span>&nbsp;&nbsp;<span class="close" (click)="close()"><b>Salir</b></span></p>
+      </div>
+    </div>
+  </div>
+</nav>
 <h1>Ver Especies identificadas</h1>
 <p>Listado de especies identificadas</p>
   <div>
@@ -5,6 +24,7 @@
   <table class="table">
   <thead>
     <tr>
+      <th scope="col">Fecha Faena(Zarpe)</th>
       <th scope="col">#Lance</th>
       <th scope="col">Lobos marinos</th>
       <th scope="col">Pelicanos</th>
@@ -14,6 +34,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of dataReport">
+      <td>{{data.fechaZarpe}}</td>
       <td>{{data.numeroLance}}</td>
       <td>{{data.lobos_marinos}}</td>
       <td>{{data.pelicanos}}</td>
