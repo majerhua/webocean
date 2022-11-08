@@ -32,10 +32,19 @@ export class LoginComponent implements OnInit {
       (data: Response) => {
         console.log("Data => ",data);
         if(data.code == '1') {
-          window.location.href ="/usuarios";
-          localStorage.setItem('login', '1');
-          localStorage.setItem('rol', data.rol);
-          localStorage.setItem('username', data.username);
+          if(data.rol == 'ADMINISTRADOR') {
+            window.location.href ="/usuarios";
+            localStorage.setItem('login', '1');
+            localStorage.setItem('rol', data.rol);
+            localStorage.setItem('username', data.username);
+          }else if(data.rol == 'BIOLOGO_MARINO') {
+            window.location.href ="/reporte-histograma";
+            localStorage.setItem('login', '1');
+            localStorage.setItem('rol', data.rol);
+            localStorage.setItem('username', data.username);
+          }else{
+            alert("Usted no tiene el ROL de usuario para ingresar");
+          }
         }else{
           alert("El usuario no existe");
         }
