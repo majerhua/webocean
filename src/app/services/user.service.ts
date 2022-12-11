@@ -6,7 +6,7 @@ import { Response } from '../models/response.model';
 import { Report } from '../models/report.model';
 
 
-const baseUrl = 'https://wsappocean.herokuapp.com/api';
+const baseUrl = 'https://wsocean.herokuapp.com/api';
 
 
 @Injectable({
